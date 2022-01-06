@@ -1,6 +1,18 @@
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
 function FormComponent() {
+  const newClientSchema = Yup.object().shape({
+    name: Yup.string().required('Name is required'),
+    company: '',
+    email: '',
+    phone: '',
+    notes: ''
+  })
+
+  const handleSubmit = values => {
+
+  }
   return (
     <div className="bg-white mt-10 px-5 py-10 rounded-md shadow-md md:w-3/4 mx-auto">
       <h1 className="text-grey-600 font-bold text-xl uppercase">Add new Client</h1>
@@ -14,10 +26,14 @@ function FormComponent() {
           notes: ''
         }}
         onSubmit={(values) => {
-          console.log(values)
+          handleSubmit(values)
         }}
+        validationSchema={newClientSchema}
       >
-        {() => (
+        {({errors}) => {
+          console.log(errors.name)
+          return (
+        
           <Form>
             <div className="mb-4">
               <label 
@@ -31,6 +47,7 @@ function FormComponent() {
                 className="mt-2 block w-full p-3 bg-green-50"
                 placeholder="Client name"
               />
+              <ErrorMessage name="name" />
             </div>
             <div className="mb-4">
               <label 
@@ -87,7 +104,7 @@ function FormComponent() {
             </div>
             <input type="submit" className="mt-5 w-full bg-blue-800 p-3 text-white uppercase font-bold" />
           </Form>
-        )}
+          )}}
 
       </Formik>
 
