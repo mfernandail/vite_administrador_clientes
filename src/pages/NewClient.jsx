@@ -1,8 +1,13 @@
+import Form from '../components/Form';
+
 function NewClient() {
   return (
-    <div>
-      <p>new</p>
-    </div>
+    <>
+      <h1 className="font-black text-4xl text-blue-900">Nuevo Cliente</h1>
+      <p className="mt-3">Llena los campos para registrar un cliente</p>
+
+      <Form />
+    </>
   )
 }
 
