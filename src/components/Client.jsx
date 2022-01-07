@@ -1,8 +1,11 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function Client({client}) {
+function Client({client, handleDelete}) {
   const navegate = useNavigate();
   const {name, company, email, phone, notes, id} = client;
+
+  
   return (
     <tr className="border-b hover:bg-gray-50">
       <td className="p-3">{name}</td>
@@ -27,7 +30,7 @@ function Client({client}) {
         <button 
           type="button"
           className="bg-red-600 hover:bg-red-700 block w-full text-white p-2 uppercase font-bold text-xs mt-3"
-
+          onClick={() => handleDelete(id)}
         >Eliminar</button>
       </td>
     </tr>

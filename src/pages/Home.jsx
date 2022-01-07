@@ -17,6 +17,25 @@ function Home() {
     getClients();
 
   }, []);
+
+  const handleDelete = async id => {
+    const confirmar = confirm('Quieres eliminar?');
+    if(confirmar) {
+      try {
+        const url = `http://localhost:4000/clients/${id}`;
+        const response = await fetch(url, {
+          method: 'DELETE'
+        });
+        await response.json();
+        
+        const arrayClients = clients.filter(c => c.id !== id);
+
+        setClients(arrayClients);
+      } catch ({error}) {
+        
+      }
+    }
+  }
   
   return (
     <>
@@ -37,7 +56,8 @@ function Home() {
             clients.map(client => (
               <Client 
                 key={client.id}
-                client={client}                              
+                client={client}  
+                handleDelete={handleDelete}                            
               />
             ))
           }

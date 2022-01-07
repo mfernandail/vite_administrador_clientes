@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import Alert from './Alert';
 
-function FormComponent() {
+function FormComponent({client = {}}) {
   const navegate = useNavigate();
 
   const newClientSchema = Yup.object().shape({
@@ -23,34 +23,48 @@ function FormComponent() {
     notes: ''
   })
 
-  const handleSubmit = async (values) => {
-    try {
-      const url = `http://localhost:4000/clients`;
-      const response = await fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(values),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
+  let url = `http://localhost:4000/clients`;
 
-      const result = await response.json()
-      // console.log(result)  
+  const handleSubmit = async (values) => {
+    let response;
+    try {
+      if(client.id) {
+        url = `http://localhost:4000/clients/${client.id}`;
+        response = await fetch(url, {
+          method: 'PUT',
+          body: JSON.stringify(values),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        
+      } else {
+        response = await fetch(url, {
+          method: 'POST',
+          body: JSON.stringify(values),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+
+      }
+      const result = await response.json();
       navegate('/clients');
     } catch (error) {console.log(error)}
   }
   return (
     <div className="bg-white mt-10 px-5 py-10 rounded-md shadow-md md:w-3/4 mx-auto">
-      <h1 className="text-grey-600 font-bold text-xl uppercase">Add new Client</h1>
+      <h1 className="text-grey-600 font-bold text-xl uppercase">{client.name ? 'Edit Client' : 'Add new Client'}</h1>
 
       <Formik
         initialValues={{
-          name: '',
-          company: '',
-          email: '',
-          phone: '',
-          notes: ''
+          name: client?.name ?? "",
+          company: client?.company ?? "",
+          email: client?.email ?? "",
+          phone: client?.phone ?? "",
+          notes: client?.notes ?? ""
         }}
+        enableReinitialize={true}
         onSubmit={async (values, {resetForm}) => {
           await handleSubmit(values);
           resetForm();
@@ -147,7 +161,11 @@ function FormComponent() {
                   placeholder="Client notes"
                 />
               </div>
-              <input type="submit" className="mt-5 w-full bg-blue-800 p-3 text-white uppercase font-bold" />
+              <input 
+                type="submit" 
+                className="mt-5 w-full bg-blue-800 p-3 text-white uppercase font-bold" 
+                value={client.name ? "Edit" : "Create"}
+              />
             </Form>
           )}}
 
