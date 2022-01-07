@@ -1,19 +1,59 @@
 {
-  "clientes": [
+  "clients": [
     {
-      "nombre": "Maria",
-      "empresa": "Casa",
-      "email": "correo@correo.com",
-      "telefono": "983746081",
-      "notas": "El Cliente solicita un servidor",
+      "name": "Maria Ibanez Leiva",
+      "company": "Casa",
+      "email": "mushu21w@gmail.com",
+      "phone": "+560983746081",
+      "notes": "123",
+      "id": 1
+    },
+    {
+      "name": "Maria Ibanez Leiva",
+      "company": "Casa",
+      "email": "mushu21w@gmail.com",
+      "phone": "+560983746081",
+      "notes": "123",
+      "id": 2
+    },
+    {
+      "name": "Pepa",
+      "company": "Casa",
+      "email": "mushu21w@gmail.com",
+      "phone": "+560983746081",
+      "notes": "123",
+      "id": 3
+    },
+    {
+      "name": "Pepa Pig",
+      "company": "Casa",
+      "email": "mushu21w@gmail.com",
+      "phone": "+560983746081",
+      "notes": "123",
+      "id": 4
+    },
+    {
+      "name": "Luis",
+      "company": "Casa",
+      "email": "correo2@correo.com",
+      "phone": "983746081",
+      "notes": "notas",
+      "id": 5
+    },
+    {
+      "name": "Ana",
+      "company": "Platanos",
+      "email": "ana_ibanez.leiva@yahoo.es",
+      "phone": "+56983746081",
+      "notes": "Tejedora",
       "id": 6
     },
     {
-      "nombre": "Juan",
-      "empresa": "Codigo Con Juan",
-      "email": "correo@correo.com",
-      "telefono": "9183981398139",
-      "notas": "",
+      "name": "Prueba",
+      "company": "My house",
+      "email": "ma_fernandda@yahoo.es",
+      "phone": "983746081",
+      "notes": "",
       "id": 7
     }
   ]

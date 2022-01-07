@@ -1,8 +1,11 @@
 import { Formik, Form, Field } from 'formik';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import Alert from './Alert';
 
 function FormComponent() {
+  const navegate = useNavigate();
+
   const newClientSchema = Yup.object().shape({
     name: Yup.string()
              .min(2, 'Name is too short')
@@ -20,8 +23,21 @@ function FormComponent() {
     notes: ''
   })
 
-  const handleSubmit = values => {
-    console.log(values)
+  const handleSubmit = async (values) => {
+    try {
+      const url = `http://localhost:4000/clients`;
+      const response = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(values),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const result = await response.json()
+      // console.log(result)  
+      navegate('/clients');
+    } catch (error) {console.log(error)}
   }
   return (
     <div className="bg-white mt-10 px-5 py-10 rounded-md shadow-md md:w-3/4 mx-auto">
@@ -35,8 +51,9 @@ function FormComponent() {
           phone: '',
           notes: ''
         }}
-        onSubmit={(values) => {
-          handleSubmit(values)
+        onSubmit={async (values, {resetForm}) => {
+          await handleSubmit(values);
+          resetForm();
         }}
         validationSchema={newClientSchema}
       >
