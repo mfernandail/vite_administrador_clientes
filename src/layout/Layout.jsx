@@ -9,12 +9,12 @@ function Layout() {
 
         <nav className="mt-10">
           <Link 
-            to="/clients"
-            className={`${pathname === '/clients' ? 'text-blue-300' : 'text-white'} text-2xl block mt-2 hover:text-blue-300`}
+            to="/"
+            className={`${pathname === '/' ? 'text-blue-300' : 'text-white'} text-2xl block mt-2 hover:text-blue-300`}
           >Clients</Link>
           <Link 
-            to="/clients/new"
-            className={`${pathname === '/clients/new' ? 'text-blue-300' : 'text-white'} text-2xl block mt-2 hover:text-blue-300`}
+            to="/new"
+            className={`${pathname === '/new' ? 'text-blue-300' : 'text-white'} text-2xl block mt-2 hover:text-blue-300`}
           >New Cliente</Link>
         </nav>
       </div>

@@ -23,13 +23,13 @@ function FormComponent({client = {}}) {
     notes: ''
   })
 
-  let url = `http://localhost:4000/clients`;
+  let url = import.meta.env.VITE_API_URL;
 
   const handleSubmit = async (values) => {
     let response;
     try {
       if(client.id) {
-        url = `http://localhost:4000/clients/${client.id}`;
+        url = `${import.meta.env.VITE_API_URL}/${client.id}`;
         response = await fetch(url, {
           method: 'PUT',
           body: JSON.stringify(values),
@@ -49,7 +49,7 @@ function FormComponent({client = {}}) {
 
       }
       const result = await response.json();
-      navegate('/clients');
+      navegate('/');
     } catch (error) {console.log(error)}
   }
   return (

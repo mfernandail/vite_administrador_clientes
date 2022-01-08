@@ -1,14 +1,6 @@
 {
   "clients": [
     {
-      "name": "Pepa",
-      "company": "Casa",
-      "email": "mushu21w@gmail.com",
-      "phone": "+560983746081",
-      "notes": "123",
-      "id": 3
-    },
-    {
       "name": "Luis",
       "company": "Casa",
       "email": "correo2@correo.com",
@@ -17,12 +9,20 @@
       "id": 5
     },
     {
-      "name": "Ana",
+      "name": "ana pepa",
       "company": "Platanos",
       "email": "ana_ibanez.leiva@yahoo.es",
       "phone": "+56983746081",
       "notes": "Tejedora",
       "id": 6
+    },
+    {
+      "name": "Maria Ibanez Leiva",
+      "company": "Casa",
+      "email": "mushu21w@gmail.com",
+      "phone": "+560983746081",
+      "notes": "casas",
+      "id": 7
     }
   ]
 }

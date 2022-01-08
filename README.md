@@ -17,3 +17,7 @@ purge: ["index.html", "./src/**/*.jsx"],
 @tailwind components;
 @tailwind utilities;
 ~~~
+- Correr Json-server:
+~~~
+npx json-server --watch db.json --port 4000
+~~~
